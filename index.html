@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Eric Treviño</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Eric Treviño is an analytical, strategy-based marketer with a creative eye for building brands people love.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: full-bleed photography and flat color fields meeting at hard, square edges. A bright, light-only page by design: white ground, saturated color blocks, photos edge to edge. */
+:root {
+  --paper: #FFFFFF;
+  --ink: #1A1446;
+  --ink-soft: #57527A;
+  --line: #E4E2F0;
+  --cobalt: #2E44E8;
+  --tangerine: #FF6A2A;
+  --pink: #FF4F9A;
+  --sun: #FFC928;
+  --mint: #22C49A;
+  --sky: #EEF1FF;
+  --blue: #3563F0;
+  --blue-light: #9DBCFF;
+  --soft-blue: #B9CCFF;
+  --soft-pink: #FFC2DA;
+  --soft-mint: #B5EEDC;
+  --soft-peach: #FFD2B8;
+  --white: #FFFFFF;
+  --scrim: 12, 9, 38;
+
+  --display: "Plus Jakarta Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --body: "Plus Jakarta Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --mono: "Plus Jakarta Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+
+  --step-0: 1rem;
+  --step-1: 1.2rem;
+  --step-2: clamp(1.3rem, 1.05rem + 1vw, 1.75rem);
+  --step-3: clamp(2rem, 1.3rem + 2.8vw, 3.4rem);
+  --step-4: clamp(3rem, 1.6rem + 6vw, 7rem);
+  --nav-h: 64px;
+  --wrap: 1200px;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; border-radius: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 1.05rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+img, video { display: block; max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--tangerine); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -0.025em; }
+p { margin: 0; }
+.gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 720px) { .gutter { padding-left: max(40px, env(safe-area-inset-left, 0px)); padding-right: max(40px, env(safe-area-inset-right, 0px)); } }
+.wrap { max-width: var(--wrap); margin-inline: auto; }
+.label { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--white); padding: 8px 12px; z-index: 60; }
+.skip:focus { left: max(16px, env(safe-area-inset-left, 0px)); }
+
+/* Nav: transparent over the hero photos, solid white once scrolled */
+.nav { position: fixed; left: 0; right: 0; top: 0; z-index: 40; padding-top: env(safe-area-inset-top, 0px); color: var(--ink); transition: background .25s ease, color .25s ease, box-shadow .25s ease; }
+.nav.solid { background: var(--paper); color: var(--ink); box-shadow: 0 1px 0 var(--line); }
+.nav { background: var(--paper); box-shadow: 0 1px 0 var(--line); }
+@media (max-width: 760px) { .wall { padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px)); } }
+.nav-inner { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { font-family: var(--display); font-weight: 800; font-size: 1.2rem; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.brand i { width: 10px; height: 10px; display: inline-block; }
+.nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 26px; align-items: center; }
+.nav a.link { text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+.nav a.link:hover { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; text-decoration-color: var(--blue-light); }
+.nav-toggle { display: none; background: none; border: 2px solid currentColor; color: inherit; padding: 6px 14px; font: 600 0.9rem var(--body); cursor: pointer; }
+@media (max-width: 760px) {
+  .nav-toggle { display: inline-flex; }
+  .nav ul { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0; background: var(--paper); color: var(--ink); box-shadow: 0 1px 0 var(--line);
+    padding: 8px max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px)); }
+  .nav ul.open { display: flex; }
+  .nav ul li a.link { display: block; padding: 12px 0; font-size: 1.1rem; }
+}
+
+.btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; padding: 14px 24px; border: 2px solid transparent; transition: transform .15s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn.sun { background: var(--blue); color: var(--white); }
+.btn.line-light { border-color: var(--ink); color: var(--ink); background: rgba(255,255,255,.6); }
+.btn.ink { background: var(--ink); color: var(--white); }
+
+/* Full-bleed media wall used by the hero and contact sections: photo on the right, fading into a soft white wash on the left where the text sits */
+.wall { position: relative; min-height: 100svh; display: flex; align-items: center; color: var(--ink); overflow: hidden; background: var(--paper); }
+.wall-media { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
+.wall-media > * { width: 100%; height: 100%; object-fit: cover; min-width: 0; }
+.wall::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to right, rgba(255,255,255,.97) 0, rgba(255,255,255,.93) 34%, rgba(255,255,255,.55) 52%, rgba(255,255,255,0) 66%); }
+.wall-copy { position: relative; z-index: 2; width: 100%; padding-block: calc(var(--nav-h) + 48px) clamp(40px, 7vw, 88px); }
+.wall-copy .wrap { display: block; }
+.panel { display: grid; gap: 20px; justify-items: start; max-width: 640px; }
+.wall .label { color: var(--ink-soft); }
+.hero h1 { font-size: var(--step-4); font-weight: 800; color: var(--ink); }
+.hero .thesis { font-family: var(--display); font-weight: 500; font-size: var(--step-2); line-height: 1.3; max-width: 30ch; }
+.hero .thesis strong { font-weight: 700; color: var(--blue); }
+.hero .sub { max-width: 52ch; font-size: var(--step-1); color: var(--ink-soft); }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+.color-bar { display: flex; height: 8px; width: min(320px, 60%); }
+.color-bar i { flex: 1; }
+.wall-media.single { display: block; }
+.wall-media.single .bg { display: none; }
+.wall-media.single .fg { position: absolute; right: 0; top: 0; height: 100%; width: auto; aspect-ratio: 1; max-width: 100%; object-fit: cover; object-position: 58% 50%;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 30%); mask-image: linear-gradient(to right, transparent 0, #000 30%); }
+.hero.wall::after { background: linear-gradient(to right, rgba(255,255,255,1) 0, rgba(255,255,255,.96) 36%, rgba(255,255,255,.4) 52%, rgba(255,255,255,0) 62%); }
+@media (max-width: 1000px) and (min-width: 761px) {
+  .wall::after, .hero.wall::after { background: linear-gradient(to right, rgba(255,255,255,.97) 0, rgba(255,255,255,.9) 50%, rgba(255,255,255,.3) 75%, rgba(255,255,255,0) 90%); }
+}
+@media (max-width: 760px) {
+  .wall { display: block; min-height: 0; }
+  .wall-media { position: relative; inset: auto; grid-template-columns: repeat(2, 1fr); height: 70vw; }
+  .wall-media > :nth-child(n+3) { display: none; }
+  .wall::after { display: none; }
+  .wall-copy { padding-block: 28px 56px; }
+  .wall-media.single { height: auto; }
+  .wall-media.single .fg { position: relative; width: 100%; height: auto; -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%); mask-image: linear-gradient(to bottom, #000 80%, transparent 100%); }
+}
+/* Generic section */
+section { scroll-margin-top: var(--nav-h); }
+.section { padding-block: clamp(64px, 9vw, 120px); }
+.head { display: grid; gap: 14px; max-width: 780px; margin-bottom: clamp(32px, 5vw, 56px); }
+.head h2 { font-size: var(--step-3); font-weight: 800; }
+.head p { font-size: var(--step-1); color: var(--ink-soft); max-width: 60ch; }
+
+/* About */
+.about-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: start; }
+.about-copy { display: grid; gap: 18px; font-size: 1.08rem; max-width: 62ch; min-width: 0; }
+.about-copy .label { color: var(--tangerine); }
+.facts { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-wrap: wrap; gap: 6px 22px; font-family: var(--mono); font-size: 0.85rem; color: var(--ink-soft); }
+.facts li::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 8px; background: var(--mint); }
+.lenses { display: grid; gap: 30px; min-width: 0; }
+.lens { display: grid; gap: 8px; padding-top: 16px; border-top: 6px solid var(--c); }
+.lens h3 { font-size: 2rem; font-weight: 800; color: var(--ink); }
+.lens p { color: var(--ink-soft); }
+@media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; } }
+
+/* Timeline */
+#experience { background: var(--sky); }
+.years { position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--nav-h)); z-index: 10; background: var(--sky); padding-block: 14px 18px; margin-bottom: 24px; box-shadow: 0 1px 0 var(--line); }
+.years-track { position: relative; height: 6px; background: var(--line); margin: 0 0 14px; }
+.years-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0%; background: linear-gradient(90deg, var(--cobalt), var(--pink) 55%, var(--tangerine)); transition: width .12s linear; }
+.years ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; }
+.years button { all: unset; cursor: pointer; display: grid; gap: 2px; color: var(--ink-soft); transition: color .2s ease; }
+.years button:focus-visible { outline: 3px solid var(--tangerine); outline-offset: 3px; }
+.years .yr { font-family: var(--display); font-weight: 800; font-size: clamp(1rem, 0.8rem + 1vw, 1.5rem); line-height: 1; }
+.years .nm { font-size: 0.78rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.years li.on button { color: var(--ink); }
+.years li.current .yr { color: var(--pink); }
+@media (max-width: 520px) { .years .nm { display: none; } }
+
+.steps { position: relative; list-style: none; margin: 0; padding: 0 0 0 44px; display: grid; gap: clamp(36px, 5vw, 64px); }
+.rail { position: absolute; left: 11px; top: 6px; bottom: 6px; width: 4px; background: var(--line); }
+.rail-fill { position: absolute; left: 0; right: 0; top: 0; height: 0%; background: linear-gradient(180deg, var(--cobalt), var(--pink) 55%, var(--tangerine)); transition: height .12s linear; }
+.step { position: relative; display: grid; grid-template-columns: minmax(180px, 260px) 1fr; gap: 12px 40px; opacity: .55; transition: opacity .35s ease; }
+.step.on { opacity: 1; }
+.step::before { content: ""; position: absolute; left: -41px; top: 6px; width: 18px; height: 18px; background: var(--paper); border: 4px solid var(--line); transform: rotate(45deg); transition: background .3s ease, border-color .3s ease; }
+.step.on::before { background: var(--c); border-color: var(--c); }
+.step-meta { display: grid; gap: 4px; align-content: start; }
+.step-meta .when { font-family: var(--mono); font-size: 0.85rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.step-meta .org { font-family: var(--display); font-weight: 800; font-size: clamp(1.5rem, 1.2rem + 1vw, 2.1rem); line-height: 1.05; }
+.step-meta .where { font-size: 0.9rem; color: var(--ink-soft); }
+.step-body { display: grid; gap: 10px; min-width: 0; }
+.step-body h3 { font-family: var(--body); font-weight: 600; font-size: 1.15rem; letter-spacing: 0; line-height: 1.35; }
+.step-body ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.step-body li { position: relative; padding-left: 20px; }
+.step-body li::before { content: ""; position: absolute; left: 0; top: .6em; width: 8px; height: 8px; background: var(--c); }
+.step-body h3 + .dates { margin-top: -6px; }
+.dates { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-soft); }
+.step-body .gap { height: 8px; }
+@media (max-width: 760px) { .step { grid-template-columns: 1fr; } .steps { padding-left: 36px; } .rail { left: 7px; } .step::before { left: -35px; width: 16px; height: 16px; } }
+@media (prefers-reduced-motion: reduce) { .step { opacity: 1; transition: none; } .years-fill, .rail-fill { transition: none; } }
+
+/* Projects: one chapter per brand, numbered cases, one consistent gallery per case */
+.projects-intro { padding-block: clamp(64px, 9vw, 120px) clamp(32px, 4vw, 56px); }
+.projects-intro .head { margin-bottom: 0; }
+.projects-intro .label { color: var(--blue); }
+.intro-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 8px; }
+.jump { display: inline-flex; align-items: center; gap: 10px; background: var(--white); border: 2px solid var(--ink); color: var(--ink); padding: 10px 16px; font: 700 0.95rem var(--body); cursor: pointer; }
+.jump::before { content: ""; width: 12px; height: 12px; background: var(--b); }
+.jump:hover { border-color: var(--blue); color: var(--blue); }
+.media-toggle { background: none; border: 0; color: var(--ink-soft); padding: 10px 4px; font: 600 0.85rem var(--body); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.chapter { scroll-margin-top: var(--nav-h); }
+.brand-head { background: var(--b); padding-block: clamp(40px, 6vw, 80px); }
+.brand-head .wrap { display: grid; gap: 10px; }
+.brand-head .label { color: var(--ink); opacity: .7; }
+.brand-head h2 { font-size: var(--step-4); font-weight: 800; line-height: .95; letter-spacing: -0.02em; }
+.brand-role { font-size: var(--step-1); font-weight: 600; }
+.case { padding-block: clamp(48px, 7vw, 96px); }
+.case + .case .wrap { border-top: 1px solid var(--line); padding-top: clamp(48px, 7vw, 96px); }
+.case + .case { padding-top: 0; }
+.case-head { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(24px, 5vw, 72px); margin-bottom: clamp(28px, 4vw, 48px); }
+.case-title { display: grid; gap: 10px; align-content: start; }
+.case-no { font-weight: 800; font-size: 0.95rem; color: var(--blue); letter-spacing: .08em; }
+.case-title h3 { font-size: var(--step-3); font-weight: 800; }
+.case-title .case-sub { font-size: 0.85rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+.case-copy { display: grid; gap: 16px; align-content: start; }
+.case-copy > p:first-child { font-size: 1.1rem; line-height: 1.65; }
+.stats { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0; border-top: 2px solid var(--b); }
+.stats li { flex: 1 1 140px; padding: 12px 16px 0 0; display: grid; gap: 2px; font-size: 0.85rem; color: var(--ink-soft); }
+.stats b { font-size: 1.35rem; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+.case .source { font-size: 0.8rem; color: var(--ink-soft); }
+.case-media { display: grid; gap: clamp(28px, 4vw, 44px); }
+.media-group { display: grid; gap: 8px; }
+.group-label { font-size: 0.78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+.group-label::before { content: ""; width: 10px; height: 10px; background: var(--b); }
+.media-row { display: flex; gap: 8px; width: 100%; max-width: calc(var(--sum) * 300px); }
+.media-row > figure, .media-feature > figure { margin: 0; position: relative; overflow: hidden; background: var(--sky); min-width: 0; aspect-ratio: var(--ar); }
+.media-row > figure { flex: var(--ar) 1 0; }
+.media-row img, .media-row video, .media-feature img, .media-feature video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.media-pair { display: flex; gap: clamp(20px, 3vw, 32px); align-items: end; }
+.media-pair > .media-group { flex: var(--sum) 1 0; min-width: 0; }
+.media-pair .media-row { max-width: none; }
+.media-feature { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.media-feature > figure:first-child { grid-column: span 2; grid-row: span 2; }
+@media (max-width: 860px) {
+  .case-head { grid-template-columns: 1fr; }
+  .media-row { flex-wrap: wrap; max-width: none; gap: 6px; }
+  .media-row > figure { flex: var(--ar) 1 calc(var(--ar) * 150px); max-width: calc(var(--ar) * 200px); }
+  .media-pair { display: grid; gap: 28px; }
+  .media-feature { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+}
+
+/* Beyond work */
+.beyond-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px); }
+.activity { display: grid; gap: 10px; align-content: start; padding-top: 16px; border-top: 6px solid var(--c); min-width: 0; }
+.activity .when { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); }
+.activity h3 { font-size: 1.6rem; font-weight: 800; }
+.activity .role-name { font-weight: 600; }
+.activity ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--ink-soft); }
+.interests { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(180px, 1fr) 3fr; gap: clamp(24px, 4vw, 56px); background: var(--sky); padding: clamp(28px, 4vw, 56px); margin-top: 8px; }
+.interests h3 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; line-height: 1.05; }
+.interests h3 span { display: block; width: 48px; height: 6px; background: var(--blue); margin-top: 16px; }
+.interest-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: clamp(20px, 3vw, 40px); counter-reset: love; }
+.interest-list li { counter-increment: love; display: flex; align-items: center; gap: 14px; padding: 18px 0; border-bottom: 1px solid rgba(26,20,70,.14); font-weight: 700; font-size: clamp(1.05rem, 1.6vw, 1.3rem); color: var(--ink); transition: color .2s, padding-left .2s; }
+.interest-list li::before { content: ""; flex: none; width: 14px; height: 14px; background: var(--m, var(--soft-blue)); transition: background .2s; }
+.interest-list li::after { content: counter(love, decimal-leading-zero); margin-left: auto; font-family: var(--mono); font-size: 0.75rem; font-weight: 500; color: var(--ink-soft); }
+.interest-list li:nth-child(4n+1) { --m: var(--soft-blue); }
+.interest-list li:nth-child(4n+2) { --m: var(--soft-pink); }
+.interest-list li:nth-child(4n+3) { --m: var(--soft-mint); }
+.interest-list li:nth-child(4n+4) { --m: var(--soft-peach); }
+.interest-list li:hover { color: var(--blue); padding-left: 4px; }
+.interest-list li:hover::before { background: var(--blue); }
+@media (max-width: 900px) { .interests { grid-template-columns: 1fr; } .interest-list { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .interest-list { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .beyond-grid { grid-template-columns: 1fr; } }
+
+/* Contact */
+.contact h2 { font-size: var(--step-4); font-weight: 800; max-width: 12ch; }
+.contact h2 em { font-style: normal; color: var(--blue); }
+.contact p { font-size: var(--step-1); max-width: 52ch; color: var(--ink-soft); }
+.email { display: inline-flex; align-items: stretch; border: 2px solid var(--ink); background: rgba(255,255,255,.6); }
+.email span { font-family: var(--mono); font-size: 0.9rem; padding: 12px 14px; user-select: all; overflow-wrap: anywhere; }
+.email button { background: var(--ink); color: var(--white); border: 0; padding: 0 16px; font: 600 0.85rem var(--body); cursor: pointer; }
+footer { background: var(--paper); color: var(--ink-soft); font-size: 0.85rem; }
+footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+/* Projects and Beyond work live on their own tabs; home sections hide while a tab is open */
+.js main > section.tab { display: none; }
+.js main > section.tab.open { display: block; }
+.js #beyond.open { padding-top: calc(var(--nav-h) + clamp(40px, 7vw, 88px)); }
+.js body.on-tab main > section:not(.tab):not(#contact) { display: none; }
+.nav a.link[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; text-decoration-color: var(--blue); }
+</style>
+
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="gutter">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Eric Treviño, back to top"><span aria-hidden="true"><i style="background:var(--soft-blue)"></i><i style="background:var(--soft-pink)"></i><i style="background:var(--soft-mint)"></i></span>Eric Treviño</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+      <ul id="nav-menu">
+        <li><a class="link" href="#about">About</a></li>
+        <li><a class="link" href="#experience">Experience</a></li>
+        <li><a class="link" href="#projects">Projects</a></li>
+        <li><a class="link" href="#beyond">Beyond work</a></li>
+        <li><a class="link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="wall hero" id="top">
+    <div class="wall-media single">
+      <img class="bg" src="assets/k-billboard-blur.webp" alt="" aria-hidden="true" width="240" height="240">
+      <img class="fg" src="assets/k-billboard-hero.webp" alt="Kiehl's billboard above Seventh Avenue in New York, with a yellow taxi passing below" width="1440" height="1440">
+    </div>
+    <div class="wall-copy gutter">
+      <div class="wrap"><div class="panel">
+        <span class="color-bar" aria-hidden="true"><i style="background:var(--soft-blue)"></i><i style="background:var(--soft-pink)"></i><i style="background:var(--soft-mint)"></i><i style="background:var(--soft-peach)"></i></span>
+        <p class="label">Brand &amp; growth marketer · MBA candidate, UT Austin McCombs</p>
+        <h1>Eric Treviño</h1>
+        <p class="thesis">An <strong>analytical, strategy-based marketer</strong> with a creative eye for building brands people love.</p>
+        <p class="sub">Over seven years in beauty on Kiehl's Since 1851, SkinCeuticals, Kérastase and Shu Uemura. Now consulting on revenue and partnerships strategy.</p>
+        <div class="ctas">
+          <a class="btn sun" href="#projects">See my work</a>
+          <a class="btn line-light" href="https://www.linkedin.com/in/ericgtrevino/" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gutter" id="about">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <p class="label">About me</p>
+        <h2 style="font-size:var(--step-3);font-weight:800">I start with the numbers and finish with a brand people want to talk about.</h2>
+        <p>I believe building brand equity means connecting authentically to consumers in a meaningful and beautiful way. I combine my analytical background with disruptive creativity that speaks to culture to bring brands to life.</p>
+        <p>I spent seven years at L'Oréal USA, from a fast-track digital marketing program on Kérastase and Shu Uemura, to global content strategy for SkinCeuticals, to leading social for Kiehl's Since 1851 in the US.</p>
+        <p>Today I'm back at McCombs as an MBA candidate and consulting on revenue and partnerships strategy for local companies in Austin, including SXSW and RP Foods.</p>
+        <ul class="facts" aria-label="Quick facts">
+          <li>Based in New York</li>
+          <li>Fluent in Spanish</li>
+          <li>MBA candidate, May 2028</li>
+        </ul>
+      </div>
+      <div class="lenses">
+        <article class="lens" style="--c:var(--sun)">
+          <h3>Analytical</h3>
+          <p>Data-driven growth plans, performance reporting and CRM, plus an insight-to-campaign pipeline that turns consumer insight into acquisition strategy.</p>
+        </article>
+        <article class="lens" style="--c:var(--mint)">
+          <h3>Strategic</h3>
+          <p>Go-to-market strategy, launch priorities, revenue and partnerships, and stakeholder management across marketing, media, R&amp;D and sales.</p>
+        </article>
+        <article class="lens" style="--c:var(--pink)">
+          <h3>Creative</h3>
+          <p>Brand image, content and campaigns, from a global brand renovation at SkinCeuticals to culture-led social for Kiehl's.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gutter" id="experience">
+    <div class="wrap">
+      <div class="head">
+        <p class="label" style="color:var(--cobalt)">Experience</p>
+        <h2>My path so far</h2>
+        <p>Scroll through the timeline, or jump to a year.</p>
+      </div>
+      <nav class="years" aria-label="Jump to a year">
+        <div class="years-track" aria-hidden="true"><div class="years-fill" id="years-fill"></div></div>
+        <ol id="years">
+          <li><button type="button" data-target="t-onespot"><span class="yr">2018</span><span class="nm">OneSpot</span></button></li>
+          <li><button type="button" data-target="t-kerastase"><span class="yr">2019</span><span class="nm">Kérastase</span></button></li>
+          <li><button type="button" data-target="t-skinceuticals"><span class="yr">2021</span><span class="nm">SkinCeuticals</span></button></li>
+          <li><button type="button" data-target="t-kiehls"><span class="yr">2023</span><span class="nm">Kiehl's</span></button></li>
+          <li><button type="button" data-target="t-sxsw"><span class="yr">2026</span><span class="nm">Consulting</span></button></li>
+          <li><button type="button" data-target="t-mba"><span class="yr">2028</span><span class="nm">MBA</span></button></li>
+        </ol>
+      </nav>
+
+      <ol class="steps" id="steps">
+        <li class="rail" aria-hidden="true"><div class="rail-fill" id="rail-fill"></div></li>
+
+        <li class="step" id="t-onespot" style="--c:var(--cobalt)">
+          <div class="step-meta"><span class="when">Aug 2018 – Aug 2019</span><span class="org">OneSpot Inc.</span><span class="where">Acquired by Aclate · Austin, TX</span></div>
+          <div class="step-body">
+            <h3>Personalization Tech and Content Marketing</h3>
+            <ul>
+              <li>Led SEO research testing personalized editorial marketing, growing brand discoverability to target audiences by 30% across 15 accounts.</li>
+              <li>Executed 3 direct campaigns quarterly, turning engagement data into insights for future outreach.</li>
+            </ul>
+            <div class="gap"></div>
+            <h3>BBA in Accounting, Marketing Minor</h3>
+            <span class="dates">The University of Texas at Austin, McCombs · December 2018</span>
+          </div>
+        </li>
+
+        <li class="step" id="t-kerastase" style="--c:var(--mint)">
+          <div class="step-meta"><span class="when">Jun 2019 – Feb 2021</span><span class="org">L'Oréal USA</span><span class="where">Kérastase and Shu Uemura · New York, NY</span></div>
+          <div class="step-body">
+            <h3>Digital Marketing Associate</h3>
+            <ul>
+              <li>Bridged sales and marketing in a fast-track development program, aligning 20 B2C clients with leadership strategy.</li>
+              <li>Developed salon partnerships with 20+ priority doors, consulting on business development and generating monthly marketing insights.</li>
+              <li>Owned CRM and loyalty strategy for a 6-brand portfolio and built the omnichannel playbook, growing program involvement by 20%.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="step" id="t-skinceuticals" style="--c:var(--sun)">
+          <div class="step-meta"><span class="when">Feb 2021 – Feb 2023</span><span class="org">L'Oréal USA</span><span class="where">SkinCeuticals · Global</span></div>
+          <div class="step-body">
+            <h3>Global Marketing Content Manager</h3>
+            <ul>
+              <li>Partnered with 20 local and emerging-market teams on go-to-market strategy, keeping the brand consistent across regions.</li>
+              <li>Set global content strategy across 20+ markets with marketing, medical affairs and R&amp;D teams, aligning on a $5M budget.</li>
+              <li>Implemented the global renovation roadmap, advancing the brand's Medical Skincare ranking to #6 through channel optimization.</li>
+              <li>Designed a new frame for global brand consistency, leading clinical consumer studies and new product claims now used across all markets.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="step" id="t-kiehls" style="--c:var(--pink)">
+          <div class="step-meta"><span class="when">Feb 2023 – Jun 2026</span><span class="org">L'Oréal USA</span><span class="where">Kiehl's Since 1851 · New York, NY</span></div>
+          <div class="step-body">
+            <h3>US Consumer Engagement, Head of Social</h3>
+            <ul>
+              <li>Directed cross-functional launch strategy across influencer, media and social for Kiehl's and Life Time, engaging 5M consumers.</li>
+              <li>Set launch strategy and go-to-market priorities for first-to-market product launches, owning a $3M budget and a $100M sales ambition.</li>
+              <li>Grew Luxury Skin market share of influence from #14 to #9 and drove a 30% lift in brand awareness through an engagement program.</li>
+              <li>Built data-driven growth plans to expand household penetration to 3.4M and increase average spend by 13%.</li>
+              <li>Designed an insight-to-campaign pipeline for a new acquisition strategy, the primary driver of a 60% YoY engagement increase.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="step" id="t-sxsw" style="--c:var(--tangerine)">
+          <div class="step-meta"><span class="when">Sep 2026 – Present</span><span class="org">Marketing and Strategy Consultant</span><span class="where">SXSW · Austin, TX</span></div>
+          <div class="step-body">
+            <h3>Consultant, Revenue and Partnerships Strategy</h3>
+            <ul>
+              <li>Creating a strategy plan to unlock $5M in additional revenue from 2027 new partnerships, with a roadmap for new high-growth industry verticals.</li>
+              <li>Building 5 augmentation plans across SXSW activation journeys for consistent, sustainable revenue through the year.</li>
+              <li>Designing consistent global SXSW branding for 3+ new pilot activations in London and Sydney through strategic brand integrations.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="step" id="t-mba" style="--c:var(--cobalt)">
+          <div class="step-meta"><span class="when">Expected May 2028</span><span class="org">UT Austin, McCombs</span><span class="where">The University of Texas at Austin</span></div>
+          <div class="step-body">
+            <h3>Master of Business Administration (MBA) Candidate</h3>
+            <ul>
+              <li>Graduate Marketing Network, Tech Club, Equal MBA</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="tab" id="projects">
+    <div class="projects-intro gutter">
+      <div class="wrap"><div class="head">
+        <p class="label">Projects</p>
+        <h2>Selected creative work</h2>
+        <p>Campaigns and content programs from my time on Kiehl's Since 1851 and SkinCeuticals.</p>
+        <div class="intro-tools">
+          <button class="jump" type="button" data-jump="work-kiehls" style="--b:var(--soft-blue)">Kiehl's Since 1851</button>
+          <button class="jump" type="button" data-jump="work-skinceuticals" style="--b:var(--soft-mint)">SkinCeuticals</button>
+          <button class="media-toggle" id="media-toggle" type="button" aria-pressed="false">Pause videos</button>
+        </div>
+      </div></div>
+    </div>
+
+    <section class="chapter" id="work-kiehls" style="--b:var(--soft-blue)" aria-labelledby="kiehls-title">
+      <header class="brand-head gutter"><div class="wrap">
+        <p class="label">US Consumer Engagement</p>
+        <h2 id="kiehls-title">Kiehl's Since 1851</h2>
+        <p class="brand-role">Head of Social · 2023 – 2026</p>
+      </div></header>
+    <article class="case gutter"><div class="wrap">
+      <div class="case-head">
+        <div class="case-title"><span class="case-no">01</span><h3>Kiehl's Kids</h3><p class="case-sub">Out of home · New York</p></div>
+        <div class="case-copy"><p>Disruptive content on New York billboards, bus shelters, wheatpaste walls and a truck. The truck carried the line that sums it up: &ldquo;Childhood goes by fast. Don&rsquo;t let your kids waste it on a 10-step skincare routine.&rdquo;</p></div>
+      </div>
+      <div class="case-media">
+        <div class="media-group"><p class="group-label">Out of home</p><div class="media-feature"><figure style="--ar:1.0000"><img src="assets/k-billboard-hero.webp" alt="Kiehl's Kids billboard above Seventh Avenue in New York with a yellow taxi below" loading="lazy" width="1440" height="1440"></figure><figure style="--ar:1.0000"><img src="assets/k-kids-wall.webp" alt="Four Kiehl's Kids posters wheatpasted on a Brooklyn wall" loading="lazy" width="1000" height="1000"></figure><figure style="--ar:1.0000"><img src="assets/k-kids-truck.webp" alt="Kiehl's Kids ad truck under the Manhattan Bridge" loading="lazy" width="1000" height="1000"></figure><figure style="--ar:1.0000"><img src="assets/k-kids-shelter-mud.webp" alt="Kiehl's Kids bus shelter ad: the only face mask kids should put on" loading="lazy" width="1000" height="1000"></figure><figure style="--ar:1.0000"><img src="assets/k-kids-shelter-ballet.webp" alt="Kiehl's Kids bus shelter ad: the only 10 step routine kids should learn" loading="lazy" width="1000" height="1000"></figure></div></div>
+      </div>
+    </div></article>
+    <article class="case gutter"><div class="wrap">
+      <div class="case-head">
+        <div class="case-title"><span class="case-no">02</span><h3>Local content that builds brand love</h3><p class="case-sub">US social</p></div>
+        <div class="case-copy"><p>Local content creation to build brand love and desirability, spanning US and DMI local expansion, retailer launch support, lo-fi brand experiences and disruptive cultural content.</p><ul class="stats"><li><b>14M</b>TikTok video views</li><li><b>20.4M</b>Instagram impressions</li><li><b>5M</b>Instagram video views</li></ul><p class="source">2023 + 2024 full-year data.</p></div>
+      </div>
+      <div class="case-media">
+        <div class="media-pair"><div class="media-group" style="--sum:1.6875"><p class="group-label">Social content</p><div class="media-row" style="--sum:1.6875"><figure style="--ar:0.5625"><video src="assets/k-whitelotus-clip.mp4" poster="assets/k-whitelotus-clip-poster.jpg" muted loop playsinline autoplay aria-label="Kiehl's and The White Lotus social video" width="576" height="1024"></video></figure><figure style="--ar:0.5625"><video src="assets/k-board-clip.mp4" poster="assets/k-board-clip-poster.jpg" muted loop playsinline autoplay aria-label="Kiehl's in-store skin analysis sidewalk sign" width="360" height="640"></video></figure><figure style="--ar:0.5625"><img src="assets/k-window.webp" alt="Kiehl's storefront screen content" loading="lazy" width="360" height="640"></figure></div></div><div class="media-group" style="--sum:1.9921"><p class="group-label">Product imagery</p><div class="media-row" style="--sum:1.9921"><figure style="--ar:0.9921"><img src="assets/k-serum.webp" alt="Model holding a Kiehl's serum" loading="lazy" width="882" height="889"></figure><figure style="--ar:1.0000"><img src="assets/k-smc.webp" alt="Kiehl's Super Multi-Corrective cream jars" loading="lazy" width="1000" height="1000"></figure></div></div></div>
+      </div>
+    </div></article>
+    <article class="case gutter"><div class="wrap">
+      <div class="case-head">
+        <div class="case-title"><span class="case-no">03</span><h3>Content at the speed of culture</h3><p class="case-sub">Trendspotting content factory</p></div>
+        <div class="case-copy"><p>A content engine that spots fast trends, makes socially native, raw and authentic branded content, and connects culturally relevant moments to tentpole activations and products.</p><ul class="stats"><li><b>23M</b>Cross-channel impressions</li><li><b>1M</b>Cross-channel engagements</li></ul><p class="source">2023 + 2024 performance.</p></div>
+      </div>
+      <div class="case-media">
+        <div class="media-group"><p class="group-label">Social content</p><div class="media-row" style="--sum:3.3761"><figure style="--ar:0.5625"><video src="assets/k-sephoria-clip.mp4" poster="assets/k-sephoria-clip-poster.jpg" muted loop playsinline autoplay aria-label="Kiehl's at Sephoria 2024" width="576" height="1024"></video></figure><figure style="--ar:0.5625"><img src="assets/k-sephoria.webp" alt="Kiehl's team at Sephoria" loading="lazy" width="576" height="1024"></figure><figure style="--ar:0.5625"><img src="assets/k-event.webp" alt="Kiehl's branded retail event" loading="lazy" width="576" height="1024"></figure><figure style="--ar:0.5625"><video src="assets/k-cleanser-clip.mp4" poster="assets/k-cleanser-clip-poster.jpg" muted loop playsinline autoplay aria-label="Kiehl's Ultra Facial Cleanser trend video" width="576" height="1024"></video></figure><figure style="--ar:0.5636"><img src="assets/k-vitc.webp" alt="Kiehl's expert explaining vitamin C in store" loading="lazy" width="576" height="1022"></figure><figure style="--ar:0.5625"><img src="assets/k-cream.webp" alt="Creator holding a Kiehl's Ultra Facial Cream jar" loading="lazy" width="576" height="1024"></figure></div></div>
+        <div class="media-group"><p class="group-label">Product content</p><div class="media-row" style="--sum:1.6875"><figure style="--ar:0.5625"><video src="assets/k-foam-clip.mp4" poster="assets/k-foam-clip-poster.jpg" muted loop playsinline autoplay aria-label="Kiehl's Ultra Facial cleanser foam filling a street outside Sephora" width="540" height="960"></video></figure><figure style="--ar:0.5625"><video src="assets/k-smc-clip.mp4" poster="assets/k-smc-clip-poster.jpg" muted loop playsinline autoplay aria-label="Kiehl's Super Multi-Corrective Soft Cream texture video" width="540" height="960"></video></figure><figure style="--ar:0.5625"><video src="assets/k-tube-clip.mp4" poster="assets/k-tube-clip-poster.jpg" muted loop playsinline autoplay aria-label="Kiehl's product texture video" width="540" height="960"></video></figure></div></div>
+      </div>
+    </div></article>
+    </section>
+
+    <section class="chapter" id="work-skinceuticals" style="--b:var(--soft-mint)" aria-labelledby="sc-title">
+      <header class="brand-head gutter"><div class="wrap">
+        <p class="label">Global</p>
+        <h2 id="sc-title">SkinCeuticals</h2>
+        <p class="brand-role">Global Marketing Content Manager · 2021 – 2023</p>
+      </div></header>
+    <article class="case gutter"><div class="wrap">
+      <div class="case-head">
+        <div class="case-title"><span class="case-no">01</span><h3>A global brand renovation</h3><p class="case-sub">Global · 2021</p></div>
+        <div class="case-copy"><p>A new global brand image and a new frame for brand consistency, now used across all markets.</p><ul class="stats"><li><b>300K</b>New followers in two years</li><li><b>#6</b>Medical professional ranking in engagement</li></ul><p class="source">Source: Kline Medical Care Landscape, US, China, EU, 2022.</p></div>
+      </div>
+      <div class="case-media">
+        <div class="media-group"><p class="group-label">Product imagery</p><div class="media-row" style="--sum:4.0000"><figure style="--ar:1.0000"><img src="assets/sc-family.webp" alt="SkinCeuticals antioxidant serums: C E Ferulic, Phloretin CF, Serum 10 and Silymarin CF" loading="lazy" width="1000" height="1000"></figure><figure style="--ar:1.0000"><img src="assets/sc-b5-dropper.webp" alt="SkinCeuticals Hydrating B5 Gel bottle with a falling drop" loading="lazy" width="1000" height="1000"></figure><figure style="--ar:1.0000"><img src="assets/sc-ha.webp" alt="SkinCeuticals H.A. Intensifier with a dropper" loading="lazy" width="1000" height="1000"></figure><figure style="--ar:1.0000"><img src="assets/sc-b5-bubbles.webp" alt="SkinCeuticals Hydrating B5 Gel bottles under water" loading="lazy" width="1000" height="1000"></figure></div><div class="media-row" style="--sum:3.0000"><figure style="--ar:1.0000"><img src="assets/sc-silymarin-stack.webp" alt="Three stacked SkinCeuticals Silymarin CF bottles" loading="lazy" width="1000" height="1000"></figure><figure style="--ar:1.0000"><video src="assets/sc-ferulic-clip.mp4" poster="assets/sc-ferulic-clip-poster.jpg" muted loop playsinline autoplay aria-label="SkinCeuticals C E Ferulic dropper video" width="720" height="720"></video></figure><figure style="--ar:1.0000"><img src="assets/sc-helix.webp" alt="SkinCeuticals product helix creative" loading="lazy" width="720" height="720"></figure></div></div>
+        <div class="media-group"><p class="group-label">Social content</p><div class="media-row" style="--sum:3.9979"><figure style="--ar:1.0000"><img src="assets/sc-b5-beaker.webp" alt="SkinCeuticals Hydrating B5 Gel creative: give your skin a hydration boost" loading="lazy" width="1000" height="1000"></figure><figure style="--ar:1.0068"><img src="assets/sc-vitc.webp" alt="SkinCeuticals vitamin C environmental protection portrait" loading="lazy" width="886" height="880"></figure><figure style="--ar:0.9966"><img src="assets/sc-shave.webp" alt="SkinCeuticals post-shave care portrait" loading="lazy" width="891" height="894"></figure><figure style="--ar:0.9944"><img src="assets/sc-duo.webp" alt="SkinCeuticals discoloration duo creative" loading="lazy" width="889" height="894"></figure></div></div>
+      </div>
+    </div></article>
+    <article class="case gutter"><div class="wrap">
+      <div class="case-head">
+        <div class="case-title"><span class="case-no">02</span><h3>Four content pillars</h3><p class="case-sub">Content production by pillar</p></div>
+        <div class="case-copy"><p>Content created for always-on, hallmarks and launches, organized into four pillars: behind the scenes, brand cause, hallmarks and campaigns, and integrated skincare.</p><ul class="stats"><li><b>2X</b>Engagement rate vs division benchmark</li></ul></div>
+      </div>
+      <div class="case-media">
+        <div class="media-group"><p class="group-label">Social content</p><div class="media-row" style="--sum:2.6875"><figure style="--ar:0.5625"><video src="assets/sc-surgeons-clip.mp4" poster="assets/sc-surgeons-clip-poster.jpg" muted loop playsinline autoplay aria-label="SkinCeuticals supports women reconstructive surgeons" width="720" height="1280"></video></figure><figure style="--ar:0.5625"><img src="assets/sc-derm.webp" alt="Board-certified dermatologist portrait for SkinCeuticals" loading="lazy" width="720" height="1280"></figure><figure style="--ar:0.5625"><video src="assets/sc-athome-clip.mp4" poster="assets/sc-athome-clip-poster.jpg" muted loop playsinline autoplay aria-label="SkinCeuticals at-home anti-blemish regimen video" width="720" height="1280"></video></figure><figure style="--ar:1.0000"><img src="assets/sc-41.webp" alt="SkinCeuticals clinically proven results creative with a serum dropper" loading="lazy" width="720" height="720"></figure></div></div>
+      </div>
+    </div></article>
+    </section>
+  </section>
+
+  <section class="section gutter tab" id="beyond">
+    <div class="wrap">
+      <div class="head">
+        <p class="label" style="color:var(--mint)">Beyond work</p>
+        <h2>Everyone deserves a seat at the table</h2>
+      </div>
+      <div class="beyond-grid">
+        <article class="activity" style="--c:var(--tangerine)">
+          <span class="when">2025 – Present</span>
+          <h3>James Beard Foundation</h3>
+          <span class="role-name">New York Chapter Young Patron</span>
+          <ul>
+            <li>Volunteer to help create a sustainable restaurant industry that gives small businesses and communities access to equitable food.</li>
+            <li>Support local Community Supported Agriculture (CSA) at farmers markets, providing free and subsidized organic local food.</li>
+          </ul>
+        </article>
+        <article class="activity" style="--c:var(--pink)">
+          <span class="when">2023 – 2026</span>
+          <h3>OUT @ L'Oréal ERG</h3>
+          <span class="role-name">Community Pillar Leadership Chair</span>
+          <ul>
+            <li>Fundraised over $1M in corporate investment, bringing 30+ global brands into LGBTQIA2+ DEI commitments nationwide.</li>
+            <li>Led the annual PRIDE marches for L'Oréal USA's office locations, connecting brands to CSR non-profit causes.</li>
+          </ul>
+        </article>
+        <div class="interests">
+          <h3>Things I love<span aria-hidden="true"></span></h3>
+          <ul class="interest-list">
+            <li>Art history</li><li>Cooking</li><li>Architecture</li><li>Interior design</li><li>Fitness</li><li>Running</li><li>Farm sharing</li><li>Memoirs</li><li>Community engagement</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wall contact" id="contact">
+    <div class="wall-media single">
+      <img class="fg" src="assets/sc-ferulic-clean.webp" alt="SkinCeuticals C E Ferulic serum resting on a professional skincare device with safety glasses" loading="lazy" width="1080" height="1080">
+    </div>
+    <div class="wall-copy gutter">
+      <div class="wrap"><div class="panel">
+        <span class="color-bar" aria-hidden="true"><i style="background:var(--soft-blue)"></i><i style="background:var(--soft-pink)"></i><i style="background:var(--soft-mint)"></i><i style="background:var(--soft-peach)"></i></span>
+        <p class="label">Contact</p>
+        <h2>Let's stay in <em>touch.</em></h2>
+        <p>Want to talk brand strategy, growth, or partnerships? Add me on LinkedIn or email me.</p>
+        <div class="ctas">
+          <a class="btn sun" href="https://www.linkedin.com/in/ericgtrevino/" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+          <span class="email"><span id="email-text">eric.trevino@my.utexas.edu</span><button type="button" id="copy-email">Copy</button></span>
+        </div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="gutter">
+  <div class="wrap">
+    <span>© 2026 Eric Treviño</span>
+    <span>Work shown: Kiehl's Since 1851 and SkinCeuticals, L'Oréal USA</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var toggle = document.getElementById('nav-toggle');
+  var menu = document.getElementById('nav-menu');
+  function closeMenu() { menu.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); toggle.textContent = 'Menu'; }
+  toggle.addEventListener('click', function () {
+    var open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.textContent = open ? 'Close' : 'Menu';
+    nav.classList.toggle('solid', open || window.scrollY > 40);
+  });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) closeMenu(); });
+
+  // Timeline progress
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var list = document.getElementById('steps');
+  var railFill = document.getElementById('rail-fill');
+  var yearsFill = document.getElementById('years-fill');
+  var yearItems = Array.prototype.slice.call(document.querySelectorAll('#years li'));
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var vh = window.innerHeight;
+    nav.classList.toggle('solid', window.scrollY > 40 || menu.classList.contains('open'));
+    var r = list.getBoundingClientRect();
+    var mark = vh * 0.55;
+    var p = Math.min(1, Math.max(0, (mark - r.top) / r.height));
+    railFill.style.height = (p * 100) + '%';
+    var active = -1;
+    steps.forEach(function (s, i) { var on = s.getBoundingClientRect().top < mark; s.classList.toggle('on', on); if (on) active = i; });
+    if (r.bottom < mark) active = steps.length - 1;
+    yearsFill.style.width = (active < 0 ? 0 : ((active + 1) / steps.length) * 100) + '%';
+    yearItems.forEach(function (li, i) { li.classList.toggle('on', i <= active); li.classList.toggle('current', i === active); });
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  window.addEventListener('resize', update);
+  window.addEventListener('load', update);
+  window.addEventListener('hashchange', function () { setTimeout(update, 50); });
+  update();
+  document.getElementById('years').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var t = document.getElementById(b.dataset.target);
+    var y = t.getBoundingClientRect().top + window.scrollY - (window.innerHeight * 0.3);
+    window.scrollTo({ top: y, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  });
+
+
+  // Tabs: #projects opens the projects page, any other link returns home
+  document.documentElement.classList.add('js');
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('main > section.tab'));
+  function route() {
+    var id = location.hash.slice(1);
+    var onTab = false;
+    tabs.forEach(function (t) {
+      var open = t.id === id;
+      t.classList.toggle('open', open);
+      if (open) onTab = true;
+      var link = document.querySelector('.nav a.link[href="#' + t.id + '"]');
+      if (link) { if (open) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current'); }
+    });
+    document.body.classList.toggle('on-tab', onTab);
+    if (onTab) { window.scrollTo(0, 0); }
+    else { var t = id && document.getElementById(id); if (t) t.scrollIntoView(); }
+    update();
+  }
+  window.addEventListener('hashchange', route);
+  route();
+
+  // Videos
+  var videos = Array.prototype.slice.call(document.querySelectorAll('video'));
+  var mediaBtn = document.getElementById('media-toggle');
+  var paused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (paused) videos.forEach(function (v) { v.removeAttribute('autoplay'); });
+  function apply() {
+    videos.forEach(function (v) { if (paused) { v.pause(); } else { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } });
+    mediaBtn.textContent = paused ? 'Play videos' : 'Pause videos';
+    mediaBtn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+  }
+  apply();
+  mediaBtn.addEventListener('click', function () { paused = !paused; apply(); });
+  document.querySelectorAll('[data-jump]').forEach(function (b) {
+    b.addEventListener('click', function () { document.getElementById(b.getAttribute('data-jump')).scrollIntoView({ behavior: 'smooth' }); });
+  });
+
+  // Copy email
+  var copyBtn = document.getElementById('copy-email');
+  var emailText = document.getElementById('email-text');
+  copyBtn.addEventListener('click', function () {
+    var done = function () { copyBtn.textContent = 'Copied'; setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1800); };
+    var fallback = function () { var rg = document.createRange(); rg.selectNodeContents(emailText); var s = window.getSelection(); s.removeAllRanges(); s.addRange(rg); copyBtn.textContent = 'Selected'; };
+    try { navigator.clipboard.writeText(emailText.textContent).then(done, fallback); } catch (err) { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>
